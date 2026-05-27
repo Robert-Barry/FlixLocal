@@ -3,20 +3,25 @@ import { create } from 'zustand';
 interface FocusState {
     activeRow: number;
     activeColumn: number;
-    setActiveRow: (row: number) => void;
-    setActiveColumn: (col: number) => void;
+    moveUp: () => void;
+    moveDown: (max: number) => void;
+    moveLeft: () => void;
+    moveRight: (max: number) => void;
     setCoordinates: (row: number, col: number) => void;
 }
 
-export const useFocus = create<FocusState>((set) => ({
+export const useFocusStore = create<FocusState>((set) => ({
     // Track the active row and column of the UI
     activeRow: 0,
     activeColumn: 0,
 
-    setActiveRow: (row) => set({ activeRow: row }),
-    setActiveColumn: (col) => set({ activeColumn: col }),
+    moveUp: () => set((state) => ({ activeRow: Math.max(0, state.activeRow - 1) })),
+    moveDown: (max) => set((state) => ({ activeRow: Math.min(max, state.activeRow + 1) })),
+    moveLeft: () => set((state) => ({ activeColumn: Math.max(0, state.activeColumn - 1) })),
+    moveRight: (max) => set((state) => ({ activeColumn: Math.min(max, state.activeColumn + 1) })),
 
-    // Prevent dual-state renders
+
+    // Prevent dual-state renders by setting both at once
     setCoordinates: (row, col) => {
         set({ activeRow: row, activeColumn: col });
     },
