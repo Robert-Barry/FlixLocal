@@ -1,6 +1,10 @@
 // App.tsx
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useFocusStore } from './store/useFocusStore'
+import VideoCard from './components/VideoCard.tsx';
+import { MOCK_CATEGORIES } from './utils/mockData';
+
+
 
 
 // ArrowUp, ArrowDown, ArrowLeft, ArrowRight
@@ -49,13 +53,20 @@ function App() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-slate-900 text-white font-sans">
-            <h1 className="text-3xl font-bold mb-4">📺 FlixLocal Focus Engine Test</h1>
-            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700 shadow-xl text-lg">
-                <p>Active Coordinates: <span className="text-yellow-400 font-mono">[{activeRow}, {activeColumn}]</span></p>
-            </div>
-            <p className="mt-4 text-sm text-slate-400">Use your keyboard Arrow Keys to navigate</p>
+            <VideoCard rowIndex={activeRow} colIndex={activeColumn} title={MOCK_CATEGORIES[activeRow].items[activeColumn]} />
         </div>
      );
 }
 
 export default App;
+
+
+/*
+        <div className="flex flex-col items-center justify-center h-screen bg-slate-900 text-white font-sans">
+            <<h1 className="text-3xl font-bold mb-4">📺 FlixLocal Focus Engine Test</h1>
+            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700 shadow-xl text-lg">
+                <p>Active Coordinates: <span className="text-yellow-400 font-mono">[{activeRow}, {activeColumn}]</span></p>
+            </div>
+            <p className="mt-4 text-sm text-slate-400">Use your keyboard Arrow Keys to navigate</p>>
+        </div>
+        */
