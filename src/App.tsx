@@ -1,7 +1,7 @@
 // App.tsx
 import { useEffect } from 'react';
-import { useFocusStore } from './store/useFocusStore'
-import VideoCard from './components/VideoCard.tsx';
+import { useFocusStore } from './store/useFocusStore';
+import MovieLane from './components/MovieLane';
 import { MOCK_CATEGORIES } from './utils/mockData';
 
 
@@ -53,7 +53,15 @@ function App() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-slate-900 text-white font-sans">
-            <VideoCard rowIndex={activeRow} colIndex={activeColumn} title={MOCK_CATEGORIES[activeRow].items[activeColumn]} />
+            <ul className="list-none overflow-x-auto whitespace-nowrap flex flex-col">
+            {MOCK_CATEGORIES.map((lane, index) => {
+                return (
+                    <li key={lane.id}>
+                        <MovieLane rowIndex={index} title={lane.title} items={lane.items} />
+                    </li>
+                );
+            })}
+            </ul>
         </div>
      );
 }
