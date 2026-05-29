@@ -3,9 +3,7 @@ import { useEffect } from 'react';
 import { useFocusStore } from './store/useFocusStore';
 import MovieLane from './components/MovieLane';
 import { MOCK_CATEGORIES } from './utils/mockData';
-
-
-
+import VideoPlayer from './components/VideoPlayer';
 
 // ArrowUp, ArrowDown, ArrowLeft, ArrowRight
 function App() {
@@ -17,11 +15,24 @@ function App() {
     const moveLeft = useFocusStore((state) => state.moveLeft);
     const moveRight = useFocusStore((state) => state.moveRight);
 
-    const activeRow = useFocusStore((state) => state.activeRow);
-    const activeColumn = useFocusStore((state) => state.activeColumn);
+    //const activeRow = useFocusStore((state) => state.activeRow);
+    //const activeColumn = useFocusStore((state) => state.activeColumn);
+
+    const isPlayerActive = useFocusStore((state) => state.isPlayerActive);
+    const openPlayer = useFocusStore((state) => state.openPlayer);
+    const closePlayer = useFocusStore((state) => state.closePlayer);
 
     useEffect(() => {
         const handleKeyEvent = (event: KeyboardEvent) => {
+            if (isPlayerActive) {
+                // PLAYER CONTROLS
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closePlayer();
+                }
+                return;
+            }
+
             if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
                 event.preventDefault();
             }
@@ -39,6 +50,9 @@ function App() {
                 case 'ArrowRight':
                     moveRight(MAX_COL_INDEX);
                     break;
+                case 'Enter':
+                    openPlayer('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8');
+                    break;
                 default:
                     break;
             }
@@ -49,7 +63,7 @@ function App() {
         return () => {
             window.removeEventListener('keydown', handleKeyEvent);
         }
-    }, [moveUp, moveDown, moveLeft, moveRight]);
+    }, [moveUp, moveDown, moveLeft, moveRight, isPlayerActive, closePlayer, openPlayer]);
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-slate-900 text-white font-sans">
@@ -62,19 +76,9 @@ function App() {
                 );
             })}
             </ul>
+            { isPlayerActive && <VideoPlayer /> }
         </div>
      );
 }
 
 export default App;
-
-
-/*
-        <div className="flex flex-col items-center justify-center h-screen bg-slate-900 text-white font-sans">
-            <<h1 className="text-3xl font-bold mb-4">📺 FlixLocal Focus Engine Test</h1>
-            <div className="p-4 bg-slate-800 rounded-lg border border-slate-700 shadow-xl text-lg">
-                <p>Active Coordinates: <span className="text-yellow-400 font-mono">[{activeRow}, {activeColumn}]</span></p>
-            </div>
-            <p className="mt-4 text-sm text-slate-400">Use your keyboard Arrow Keys to navigate</p>>
-        </div>
-        */

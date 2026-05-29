@@ -7,7 +7,7 @@ interface MovieLaneProps {
     items: string[];
 };
 
-export default function MovieLanes({ rowIndex, title, items }: MovieLaneProps) {
+export default function MovieLane({ rowIndex, title, items }: MovieLaneProps) {
     const activeRow = useFocusStore((state) => state.activeRow);
     const activeColumn = useFocusStore((state) => state.activeColumn);
 

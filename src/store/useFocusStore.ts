@@ -8,6 +8,10 @@ interface FocusState {
     moveLeft: () => void;
     moveRight: (max: number) => void;
     setCoordinates: (row: number, col: number) => void;
+    isPlayerActive: boolean;
+    activeVideoUrl: string | null;
+    openPlayer: (url: string) => void;
+    closePlayer: () => void;
 }
 
 export const useFocusStore = create<FocusState>((set) => ({
@@ -25,4 +29,10 @@ export const useFocusStore = create<FocusState>((set) => ({
     setCoordinates: (row, col) => {
         set({ activeRow: row, activeColumn: col });
     },
-}))
+
+    isPlayerActive: false,
+    activeVideoUrl: null,
+
+    openPlayer: (url) => set({ isPlayerActive: true, activeVideoUrl: url }),
+    closePlayer: () => set({ isPlayerActive: false, activeVideoUrl: null }),
+}));

@@ -21,3 +21,13 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Constructed semantic, accessible `<ul>`/`<li>` component hierarchies for Lanes and Cards matching Fox TV a11y specifications.
     - Mitigated CSS transformation clipping bugs via parent vertical padding layout buffers.
     - Leveraged high-performance, atomic Zustand selectors to isolate component renders, ensuring stable 60fps interaction profiles.
+- **FLIX-201: Implement Hardware-Optimized Horizontal Lane Scrolling (Focus Centering)**
+    - Engineered a Fixed-Left Focus UI pattern to eliminate cinematic eye strain on large-format viewports.
+    - Replaced high-overhead native `scrollIntoView` operations with GPU-accelerated CSS `transform: translateX()` layouts.
+    - Eliminated structural layout clipping via responsive `px-8` horizontal component buffers.
+    - Suppressed platform-specific native browser scrollbar anomalies by transitioning lane structures to strict `overflow-hidden` matrices.
+- **FLIX-202: Implement Dynamic Full-Screen Video Player Lifecycle Overlay**
+    - Integrated full-screen absolute viewport overlay matrix (`fixed inset-0 z-50`).
+    - Implemented the Defensive Data Guard and Imperative Native Insertion patterns to eliminate browser-engine race conditions.
+    - Deployed the strict Hardware Purge Pattern using React `useRef` to manually halt media streams, wipe source strings, and flush physical TV decoding chips upon component unmount.
+    - Successfully integrated live streaming playback pipelines using production HLS (`.m3u8`) protocol manifests.
