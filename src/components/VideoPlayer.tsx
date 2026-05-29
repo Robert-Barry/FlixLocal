@@ -9,7 +9,7 @@ export default function VideoPlayer() {
     useEffect(() => {
         console.log("Video component mounted into DOM. Active URL:", activeVideoUrl);
 
-        // 👇 HARD IMPERATIVE INJECTION: Force the native browser engine to read the source string
+        // Force the native browser engine to read the source string
         if (videoRef.current && activeVideoUrl) {
             videoRef.current.src = activeVideoUrl;
             videoRef.current.load();
