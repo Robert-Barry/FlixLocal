@@ -3,9 +3,7 @@ import { useEffect } from 'react';
 import { useFocusStore } from './store/useFocusStore';
 import MovieLane from './components/MovieLane';
 import { MOCK_CATEGORIES } from './utils/mockData';
-
-
-
+import VideoPlayer from './components/VideoPlayer';
 
 // ArrowUp, ArrowDown, ArrowLeft, ArrowRight
 function App() {
@@ -17,8 +15,8 @@ function App() {
     const moveLeft = useFocusStore((state) => state.moveLeft);
     const moveRight = useFocusStore((state) => state.moveRight);
 
-    const activeRow = useFocusStore((state) => state.activeRow);
-    const activeColumn = useFocusStore((state) => state.activeColumn);
+    //const activeRow = useFocusStore((state) => state.activeRow);
+    //const activeColumn = useFocusStore((state) => state.activeColumn);
 
     const isPlayerActive = useFocusStore((state) => state.isPlayerActive);
     const openPlayer = useFocusStore((state) => state.openPlayer);
@@ -53,7 +51,7 @@ function App() {
                     moveRight(MAX_COL_INDEX);
                     break;
                 case 'Enter':
-                    openPlayer('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
+                    openPlayer('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8');
                     break;
                 default:
                     break;
@@ -78,6 +76,7 @@ function App() {
                 );
             })}
             </ul>
+            { isPlayerActive && <VideoPlayer /> }
         </div>
      );
 }
