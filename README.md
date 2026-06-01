@@ -21,6 +21,8 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Constructed semantic, accessible `<ul>`/`<li>` component hierarchies for Lanes and Cards matching Fox TV a11y specifications.
     - Mitigated CSS transformation clipping bugs via parent vertical padding layout buffers.
     - Leveraged high-performance, atomic Zustand selectors to isolate component renders, ensuring stable 60fps interaction profiles.
+
+### 🟩 SPRINT 2: Advanced Spatial Physics & Polish
 - **FLIX-201: Implement Hardware-Optimized Horizontal Lane Scrolling (Focus Centering)**
     - Engineered a Fixed-Left Focus UI pattern to eliminate cinematic eye strain on large-format viewports.
     - Replaced high-overhead native `scrollIntoView` operations with GPU-accelerated CSS `transform: translateX()` layouts.
