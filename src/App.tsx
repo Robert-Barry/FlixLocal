@@ -7,8 +7,6 @@ import VideoPlayer from './components/VideoPlayer';
 
 // ArrowUp, ArrowDown, ArrowLeft, ArrowRight
 function App() {
-    const MAX_ROW_INDEX = 2;
-    const MAX_COL_INDEX = 4;
 
     const moveUp = useFocusStore((state) => state.moveUp);
     const moveDown = useFocusStore((state) => state.moveDown);
@@ -21,6 +19,12 @@ function App() {
     const isPlayerActive = useFocusStore((state) => state.isPlayerActive);
     const openPlayer = useFocusStore((state) => state.openPlayer);
     const closePlayer = useFocusStore((state) => state.closePlayer);
+
+    const setData = useFocusStore((state) => state.setData);
+
+    useEffect(() => {
+        setData(MOCK_CATEGORIES);
+    }, [setData]);
 
     useEffect(() => {
         const handleKeyEvent = (event: KeyboardEvent) => {
@@ -42,13 +46,13 @@ function App() {
                     moveUp();
                     break;
                 case 'ArrowDown':
-                    moveDown(MAX_ROW_INDEX);
+                    moveDown();
                     break;
                 case 'ArrowLeft':
                     moveLeft();
                     break;
                 case 'ArrowRight':
-                    moveRight(MAX_COL_INDEX);
+                    moveRight();
                     break;
                 case 'Enter':
                     openPlayer('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8');
