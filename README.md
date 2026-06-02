@@ -54,3 +54,8 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Eliminated the Stale Closure Bug inside custom window keydown event processors by using native structural evaluation matrices (`videoRef.current.paused`).
     - Implemented the Direct DOM Manipulation Pattern inside `ontimeupdate` event loops, bypassing React virtual DOM render cycles to achieve zero frame-rate degradation on standard hardware.
     - Integrated standard media control listeners (Spacebar toggles) matching universal consumer D-Pad streaming specifications.
+- **FLIX-402: Implement HUD Auto-Hide Lifecycle & Playback State Synchronization**
+    - Engineered a rolling idle timeout engine (`setTimeout` matrix) to smoothly fade out the playback interface after 3 seconds of inactivity.
+    - Resolved synchronous cascading re-render warnings by decoupling initial mount values from runtime event loops.
+    - Implemented an aggressive hardware thread-safety pattern by wrapping the background lifecycle countdown inside a cleanable `useRef` architecture to eliminate memory leaks during player unmounting.
+    - Integrated interactive state-driven playback indicators (▶/⏸ UI glyph matrices).
