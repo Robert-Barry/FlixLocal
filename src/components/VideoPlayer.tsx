@@ -2,7 +2,6 @@ import { useFocusStore } from '../store/useFocusStore';
 import { useState, useEffect, useRef } from 'react';
 
 export default function VideoPlayer() {
-    const [isPaused, setIsPaused] = useState<boolean>(false);
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
     const activeVideoUrl = useFocusStore((state) => state.activeVideoUrl);
@@ -15,10 +14,8 @@ export default function VideoPlayer() {
                 if (videoRef.current) {
                     if (videoRef.current.paused) {
                         videoRef.current.play();
-                        setIsPaused(false);
                     } else {
                         videoRef.current.pause();
-                        setIsPaused(true);
                     }
                 }
             }
