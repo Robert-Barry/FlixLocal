@@ -34,7 +34,7 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Implemented the Defensive Data Guard and Imperative Native Insertion patterns to eliminate browser-engine race conditions.
     - Deployed the strict Hardware Purge Pattern using React `useRef` to manually halt media streams, wipe source strings, and flush physical TV decoding chips upon component unmount.
     - Successfully integrated live streaming playback pipelines using production HLS (`.m3u8`) protocol manifests.
-
+ 
 ### 🟩 SPRINT 3: Data Hydration & Matrix Automation
 
 - **FLIX-301: Implement Dynamic Matrix Boundaries & Variable Lane Length Tracking**
