@@ -23,6 +23,7 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Leveraged high-performance, atomic Zustand selectors to isolate component renders, ensuring stable 60fps interaction profiles.
 
 ### 🟩 SPRINT 2: Advanced Spatial Physics & Polish
+
 - **FLIX-201: Implement Hardware-Optimized Horizontal Lane Scrolling (Focus Centering)**
     - Engineered a Fixed-Left Focus UI pattern to eliminate cinematic eye strain on large-format viewports.
     - Replaced high-overhead native `scrollIntoView` operations with GPU-accelerated CSS `transform: translateX()` layouts.
@@ -35,8 +36,13 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Successfully integrated live streaming playback pipelines using production HLS (`.m3u8`) protocol manifests.
  
 ### 🟩 SPRINT 3: Data Hydration & Matrix Automation
+
 - **FLIX-301: Implement Dynamic Matrix Boundaries & Variable Lane Length Tracking**
     - Eliminated hardcoded view index constraints ("magic numbers") from the core viewport controllers.
     - Consolidated application telemetry data structures into a unified global state machine layout.
     - Engineered adaptive internal boundaries for `moveRight` and `moveDown` matrices that scale dynamically based on runtime array dimensions.
     - Implemented client-side data hydration lifecycles via React mounting hooks to populate store architectures on boot.
+- **FLIX-302: Implement Safe Vertical Matrix Snapping (Column Capping)**
+    - Developed a defensive boundary fallback engine for `moveUp` and `moveDown` state matrices.
+    - Eliminated fatal application crashes caused by `undefined` template calculations when navigating vertically into variable lane content.
+    - Engineered an atomic snapping algorithm that realigns the active column to the terminal index of a target lane in a single state tick.

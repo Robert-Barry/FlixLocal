@@ -27,11 +27,35 @@ export const useFocusStore = create<FocusState>((set) => ({
     activeRow: 0,
     activeColumn: 0,
 
-    moveUp: () => set((state) => ({ activeRow: Math.max(0, state.activeRow - 1) })),
+    moveUp: () => set((state) => {
+         const previousRow = Math.max(0, state.activeRow - 1);
+
+        // Look up the previous row's items to check the length
+        const targetRowData = state.data[previousRow];
+        const maxTargetCols = targetRowData ? targetRowData.items.length - 1 : 0;
+
+        // If the current column is past the edge of the new row, snap it back
+        const safeColumn = Math.min(maxTargetCols, state.activeColumn);
+
+        return {
+            activeRow: previousRow,
+            activeColumn: safeColumn
+        };
+    }),
     moveDown: () => set((state) => { 
         const maxRowIndex = state.data.length - 1;
+        const nextRow = Math.min(maxRowIndex, state.activeRow + 1);
+
+        // Look up the next row's items to check the length
+        const targetRowData = state.data[nextRow];
+        const maxTargetCols = targetRowData ? targetRowData.items.length - 1 : 0;
+
+        // If the current column is past the edge of the new row, snap it back
+        const safeColumn = Math.min(maxTargetCols, state.activeColumn);
+
         return {
-            activeRow: Math.min(maxRowIndex, state.activeRow + 1)
+            activeRow: nextRow,
+            activeColumn: safeColumn
         };
     }),
     moveLeft: () => set((state) => ({ activeColumn: Math.max(0, state.activeColumn - 1) })),
