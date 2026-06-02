@@ -34,7 +34,7 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Implemented the Defensive Data Guard and Imperative Native Insertion patterns to eliminate browser-engine race conditions.
     - Deployed the strict Hardware Purge Pattern using React `useRef` to manually halt media streams, wipe source strings, and flush physical TV decoding chips upon component unmount.
     - Successfully integrated live streaming playback pipelines using production HLS (`.m3u8`) protocol manifests.
- 
+
 ### 🟩 SPRINT 3: Data Hydration & Matrix Automation
 
 - **FLIX-301: Implement Dynamic Matrix Boundaries & Variable Lane Length Tracking**
@@ -46,3 +46,11 @@ A proof-of-concept, enterprise-grade Connected TV (CTV) application built with R
     - Developed a defensive boundary fallback engine for `moveUp` and `moveDown` state matrices.
     - Eliminated fatal application crashes caused by `undefined` template calculations when navigating vertically into variable lane content.
     - Engineered an atomic snapping algorithm that realigns the active column to the terminal index of a target lane in a single state tick.
+
+### 🟩 SPRINT 4: Performance-Optimized HUD & Playback Systems
+
+- **FLIX-401: Build a Performance-Optimized Media Playback Controls Overlay (HUD)**
+    - Engineered a high-performance Heads-Up Display (HUD) overlay tracking real-time playback telemetry.
+    - Eliminated the Stale Closure Bug inside custom window keydown event processors by using native structural evaluation matrices (`videoRef.current.paused`).
+    - Implemented the Direct DOM Manipulation Pattern inside `ontimeupdate` event loops, bypassing React virtual DOM render cycles to achieve zero frame-rate degradation on standard hardware.
+    - Integrated standard media control listeners (Spacebar toggles) matching universal consumer D-Pad streaming specifications.
